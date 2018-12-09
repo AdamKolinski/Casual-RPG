@@ -36,6 +36,27 @@ namespace RPG.Classes
                     break;
             }
         }
+        public void PauseMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("Pauza");
+            Console.WriteLine("1] Wznów grę");
+            Console.WriteLine("2] Zapisz grę (niedostępne)");
+            Console.WriteLine("3] Wyjdź do menu głównego");
 
+            var key = Console.ReadKey().Key;
+
+            switch(key)
+            {
+                case ConsoleKey.D1:
+                    GameLoop.gameState = GameLoop.GameStates.Playing;
+                    break;
+                case ConsoleKey.D2:
+                    break;
+                case ConsoleKey.D3:
+                    GameLoop.gameState = GameLoop.GameStates.Menu;
+                    break;
+            }
+        }
     }
 }

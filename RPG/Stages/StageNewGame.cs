@@ -18,7 +18,7 @@ namespace RPG.Stages
             Console.Write("Nazywam się "); Player.name = Console.ReadLine();
 
 
-            while (Player.characterClass == Player.CharacterClasses.NONE)
+            while (Player.characterClass == Player.CharacterClasses.Brak)
             {
                 Console.Clear();
 
@@ -29,11 +29,11 @@ namespace RPG.Stages
                 switch (choice)
                 {
                     case ConsoleKey.D1:
-                        Player.characterClass = Player.CharacterClasses.WARRIOR;
+                        Player.characterClass = Player.CharacterClasses.Wojownik;
                         Player.Power = 1;
                         break;
                     case ConsoleKey.D2:
-                        Player.characterClass = Player.CharacterClasses.MAGE;
+                        Player.characterClass = Player.CharacterClasses.Mag;
                         Player.Strength = 1;
                         break;
                 }

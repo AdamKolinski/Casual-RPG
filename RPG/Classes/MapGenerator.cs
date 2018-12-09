@@ -44,7 +44,7 @@ namespace RPG.Classes
 
             x = Console.CursorLeft;
             y = Console.CursorTop+1;
-            Console.WriteLine(Player.xPos + ", " + Player.yPos);
+            //Console.WriteLine(Player.xPos + ", " + Player.yPos);
 
             for (int i = 0; i < height; i++)
             {

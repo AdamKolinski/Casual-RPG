@@ -16,8 +16,10 @@ namespace RPG.Stages
             //mapGenerator.DrawMap(1);
             MapGenerator f = new MapGenerator();
             f.DrawMap();
+            Player.ShowStats();
 
-            Player.Movement();
+            GameLoop.GetKeyboardInput();
+            //Player.Movement();
             //Console.ReadKey(true);
             //GameLoop.gameState = GameLoop.GameStates.Exit;
         }

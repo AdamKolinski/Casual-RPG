@@ -18,3 +18,10 @@ E:/C#/RPG/RPG/obj/x86/Debug/RPG.pdb
 /Users/adam/Desktop/RPG/RPG/obj/x86/Debug/RPG.csproj.CoreCompileInputs.cache
 /Users/adam/Desktop/RPG/RPG/obj/x86/Debug/RPG.exe
 /Users/adam/Desktop/RPG/RPG/obj/x86/Debug/RPG.pdb
+E:\C#\Casual RPG\RPG\bin\Debug\RPG.exe.config
+E:\C#\Casual RPG\RPG\bin\Debug\RPG.exe
+E:\C#\Casual RPG\RPG\bin\Debug\RPG.pdb
+E:\C#\Casual RPG\RPG\obj\x86\Debug\RPG.csprojResolveAssemblyReference.cache
+E:\C#\Casual RPG\RPG\obj\x86\Debug\RPG.csproj.CoreCompileInputs.cache
+E:\C#\Casual RPG\RPG\obj\x86\Debug\RPG.exe
+E:\C#\Casual RPG\RPG\obj\x86\Debug\RPG.pdb
