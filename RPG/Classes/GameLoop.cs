@@ -34,7 +34,7 @@ namespace RPG.Classes
         public static void GetKeyboardInput()
         {
 
-            var keyPressed = Console.ReadKey().Key;
+            var keyPressed = Console.ReadKey(true).Key;
             switch (keyPressed)
             {
                 case ConsoleKey.W:

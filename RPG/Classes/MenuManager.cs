@@ -44,7 +44,7 @@ namespace RPG.Classes
             Console.WriteLine("2] Zapisz grę (niedostępne)");
             Console.WriteLine("3] Wyjdź do menu głównego");
 
-            var key = Console.ReadKey().Key;
+            var key = Console.ReadKey(true).Key;
 
             switch(key)
             {

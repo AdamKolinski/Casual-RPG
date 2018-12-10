@@ -9,5 +9,8 @@ namespace RPG.Enemies
     class EnemyPreset
     {
         public string name = "Enemy";
+        public int currentHP, maxHP;
+        public int strength, power;
+        public int XP = 20;
     }
 }

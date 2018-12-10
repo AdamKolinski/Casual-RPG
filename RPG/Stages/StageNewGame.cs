@@ -29,16 +29,15 @@ namespace RPG.Stages
                 switch (choice)
                 {
                     case ConsoleKey.D1:
-                        Player.characterClass = Player.CharacterClasses.Wojownik;
-                        Player.Power = 1;
+                        Player.InitializeCharacterClass(Player.CharacterClasses.Wojownik);
                         break;
                     case ConsoleKey.D2:
-                        Player.characterClass = Player.CharacterClasses.Mag;
-                        Player.Strength = 1;
+                        Player.InitializeCharacterClass(Player.CharacterClasses.Mag);
                         break;
                 }
 
                 StageManager.stageNumber = 1;
+                StagePreset.mapLoaded = false;
             }
         }
     }

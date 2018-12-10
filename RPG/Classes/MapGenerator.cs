@@ -3,17 +3,18 @@ using System.IO;
 
 namespace RPG.Classes
 {
-    class MapGenerator
+    public class MapGenerator
     {
-        int width = 0, height = 0, x = 0, y = 0;
-        public static string[,] mapCharatcers;
+        public static int width = 0, height = 0, x = 0, y = 0;
+        public static string[,] mapCharacters;
+        public static bool spawnedPlayer = false;
 
         public MapGenerator()
         {
             
         }
 
-        public void DrawMap()
+        public void GenerateMapFromFile()
         {
             FileStream fs = new FileStream("Maps/Location_1.txt", FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(fs);
@@ -34,7 +35,7 @@ namespace RPG.Classes
                 height++;
             }
 
-            mapCharatcers = new string[width, height];
+            mapCharacters = new string[width, height];
 
             fs.Close();
             sr.Close();
@@ -43,7 +44,7 @@ namespace RPG.Classes
             sr = new StreamReader(fs);
 
             x = Console.CursorLeft;
-            y = Console.CursorTop+1;
+            y = Console.CursorTop + 1;
             //Console.WriteLine(Player.xPos + ", " + Player.yPos);
 
             for (int i = 0; i < height; i++)
@@ -52,15 +53,46 @@ namespace RPG.Classes
                 for (int j = 0; j < line.Length; j++)
                 {
 
-                    if (j == Player.xPos && i == Player.yPos)
+                    if (line[j].ToString().Equals("s"))
                     {
-                        mapCharatcers[j, i] = Player.characterSign;
-                    } else {
-
-                        mapCharatcers[j, i] = line[j].ToString();
+                        if (spawnedPlayer == false)
+                        {
+                            mapCharacters[j, i] = Player.characterSign;
+                            Player.xPos = j;
+                            Player.yPos = i;
+                            spawnedPlayer = true;
+                        }
+                        else
+                        {
+                            if(j != Player.xPos || i != Player.yPos)
+                            mapCharacters[j, i] = line[j].ToString().Replace("s", " ");
+                            if((j == Player.xPos && i == Player.yPos))
+                                mapCharacters[j, i] = Player.characterSign;
+                        }
                     }
-                    Console.Write(mapCharatcers[j, i]);
+                    else
+                    {
+                        if (j == Player.xPos && i == Player.yPos)
+                        {
+                            mapCharacters[j, i] = Player.characterSign;
+                        }
+                        else
+                        {
+                            mapCharacters[j, i] = line[j].ToString();
+                        }
+                    }
                     //map[j, i] = line[0].ToString();
+                }
+            }
+        }
+
+        public static void DrawMap()
+        {
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    Console.Write(mapCharacters[j, i]);
                 }
                 Console.WriteLine();
             }
