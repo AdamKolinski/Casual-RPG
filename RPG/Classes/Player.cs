@@ -7,22 +7,23 @@ using RPG.Enemies;
 using RPG.Skills;
 using RPG.Skills.Magical;
 using RPG.Skills.Physical;
+using System.Threading;
 
 namespace RPG.Classes
 {
     class Player
     {
         public enum CharacterClasses { Wojownik, Mag, Brak }
-        public static CharacterClasses characterClass = CharacterClasses.Brak;
+        public static CharacterClasses characterClass = CharacterClasses.Mag;
         public static string characterSign = "×";
-        public static int xPos = 2, yPos = 2;
+        public static int xPos = -10, yPos = -10;
         public static string name = "John";
         public static int playerLvl = 1, currentXP = 0, nextLvlXP = 100;
         public static int maxHP = 10, currentHP = 10;
         public static int strength = 3;
         public static int maxStamina = 20, currentStamina = 20;
         public static int power = 3;
-        public static int maxMana = 20, currentMana = 20;
+        public static int maxMana = 25, currentMana = 25;
         public static int dmgReduction = 0, dmgReductionDuration = 0;
         public static SkillPreset[] learnedSkills = new SkillPreset[4];
 
@@ -120,6 +121,63 @@ namespace RPG.Classes
             return dmg;
         }
 
+        public static void CheckXP(bool showLvlCommunicate)
+        {
+            int addedLvls = 0;
+            while(currentXP >= nextLvlXP) {
+                currentXP -= nextLvlXP;
+                addedLvls++;
+                nextLvlXP += nextLvlXP/2;
+            }
+
+            if (showLvlCommunicate == true)
+            {
+                if (addedLvls > 0)
+                {
+                    if (addedLvls == 1) Console.WriteLine("Zyskałeś 1 poziom!");
+                    else Console.WriteLine("Zyskałeś {0} poziomów!", addedLvls);
+
+                    AddLevel(addedLvls, true);
+                }
+                
+            }
+            else AddLevel(addedLvls, false);
+        }
+
+        public static void AddLevel(int levelsToAdd, bool showNewStats)
+        {
+            playerLvl += levelsToAdd;
+            switch (characterClass)
+            {
+                case CharacterClasses.Wojownik:
+                    if (showNewStats) {
+                        Console.WriteLine("Ulepszone statystyki:");
+                        Console.WriteLine("Siła: {0} | +{1}", power, 2 * levelsToAdd);
+                        Console.WriteLine("Maksymalna wytrzymałość: {0} | +{1}", maxMana, 5 * levelsToAdd);
+                        Console.WriteLine("Maksymalne życie: {0} | +{1}", maxHP, 4 * levelsToAdd);
+                    }
+                    strength += 2*levelsToAdd;
+                    maxHP += 4*levelsToAdd;
+                    maxStamina += 5*levelsToAdd;
+                    break;
+                case CharacterClasses.Mag:
+                    if (showNewStats)
+                    {
+                        Console.WriteLine("Ulepszone statystyki:");
+                        Console.WriteLine("Moc: {0} | +{1}", power, 2*levelsToAdd);
+                        Console.WriteLine("Maksymalna mana: {0} | +{1}", maxMana, 10*levelsToAdd);
+                        Console.WriteLine("Maksymalne życie: {0} | +{1}", maxHP, 2*levelsToAdd);
+                    }
+                    power += 2*levelsToAdd;
+                    maxHP += 2*levelsToAdd;
+                    maxMana += 10*levelsToAdd;
+                    break;
+                default:
+                    break;
+            }
+            learnedSkills[2].InitializeSkillValues();
+        }
+
         public static void UseSkill(int skillNumber, EnemyPreset enemy)
         {
             if (learnedSkills[skillNumber].skillType == SkillPreset.SkillType.Magiczny)
@@ -134,15 +192,16 @@ namespace RPG.Classes
             enemy.currentHP -= learnedSkills[skillNumber].damage;
         }
 
-        public static void ShowStats()
+        public static void ShowStats(bool showMoreAvailable)
         {
-            Console.WriteLine("HP: {0}/{1}, Siła: {2}, Moc: {3}, Wytrzymałość: {4}/{5}, Mana: {6}/{7}    (c)Pokaż więcej", currentHP, maxHP, strength, power, currentStamina, maxStamina, currentMana, maxMana);
+            if(showMoreAvailable) Console.WriteLine("HP: {0}/{1}, Siła: {2}, Moc: {3}, Wytrzymałość: {4}/{5}, Mana: {6}/{7}    (c)Pokaż więcej", currentHP, maxHP, strength, power, currentStamina, maxStamina, currentMana, maxMana);
+            else Console.WriteLine("HP: {0}/{1}, Siła: {2}, Moc: {3}, Wytrzymałość: {4}/{5}, Mana: {6}/{7}", currentHP, maxHP, strength, power, currentStamina, maxStamina, currentMana, maxMana);
         }
 
-        public static void ShowStats(int x, int y)
+        public static void ShowStats(int x, int y, bool showMoreAvailable)
         {
             Console.SetCursorPosition(x, y);
-            Console.Write("HP: {0}/{1}, Siła: {2}, Moc: {3}, Wytrzymałość: {4}/{5}, Mana: {6}/{7}    (c)Pokaż więcej", currentHP, maxHP, strength, power, currentStamina, maxStamina, currentMana, maxMana);
+            ShowStats(showMoreAvailable);
         }
 
         public static void ShowStatsDetailed()
@@ -159,6 +218,7 @@ namespace RPG.Classes
             Console.WriteLine("Wytrzymałość: {0}/{1}", currentStamina, maxStamina);
             Console.WriteLine("Mana: {0}/{1}", currentMana, maxMana);
             Console.ReadKey(true);
+            Console.Clear();
         }
     }
 }

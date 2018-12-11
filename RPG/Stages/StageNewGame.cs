@@ -43,7 +43,7 @@ namespace RPG.Stages
                 Console.Write("Podaj imię swojego dawnego przyjaciela: ");
                 Companion.name = Console.ReadLine();
                 Console.Clear();
-                Console.WriteLine($"Na odludziu żył sobie {Player.name}, niegdyś potężny, lecz teraz pozbawiony dawnej chwały i umiejętności  {Player.characterClass}.\n" +
+                Console.WriteLine($"Na odludziu żył sobie {Player.name}, niegdyś potężny, lecz teraz pozbawiony dawnej chwały i umiejętności {Player.characterClass}.\n" +
                     $"Pewnego dnia odwiedził go jego stary przyjaciel, {Companion.name}. Ten powiedział mu, że zagłada świata jest blisko,\n" +
                     $"ponieważ Gorgoth zebrał siły, aby przejąć 3 Artefakty Równowagi... {Player.name} postanowił odrzucić życie pustelnika i powrócić do dawnej siły, aby przeszkodzić Gorgothowi w przejęciu Artefaktów Równowagi, które dadzą mu władzę nad światem.\n" +
                     $"{Companion.name} usłyszał tylko podziękowania rzucone z daleka, ponieważ {Player.name} biegł już ku przygodzie.\n" +

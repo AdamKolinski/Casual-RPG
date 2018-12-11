@@ -6,14 +6,19 @@ namespace RPG.Stages
     using RPG.Classes;
     public class StagePreset
     {
-        public MapGenerator mapGenerator = new MapGenerator();
+        public static MapGenerator mapGenerator = new MapGenerator();
         public static bool mapLoaded = false;
         public StagePreset()
         {
-            Console.Clear();
+            
+            Console.CursorVisible = false;
             if (mapLoaded == false)
             {
+                Console.Clear();
                 mapGenerator.GenerateMapFromFile();
+                Console.SetCursorPosition(0, 5);
+                //MapGenerator.prevMapCharacters = MapGenerator.mapCharacters;
+                //MapGenerator.DrawMap();
                 mapLoaded = true;
             }
         }

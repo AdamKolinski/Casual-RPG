@@ -10,11 +10,17 @@ namespace RPG.Skills.Magical
     {
         public MS_FireBall()
         {
+            InitializeSkillValues();
+        }
+
+        public override void InitializeSkillValues()
+        {
+            base.InitializeSkillValues();
             skillType = SkillType.Magiczny;
             skillCostCharacter = SkillCostCharacter.M;
             skillName = "Kula ognia";
             damage = 2 * playerPower;
-            cost = 3;
+            cost = 2;
         }
     }
 }

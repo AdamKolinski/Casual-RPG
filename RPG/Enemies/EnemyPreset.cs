@@ -8,6 +8,7 @@ namespace RPG.Enemies
 {
     class EnemyPreset
     {
+        public static string[] EnemySigns = new string[] {"W", "S", "K"};
         public string name = "Enemy";
         public int currentHP, maxHP;
         public int strength, power;

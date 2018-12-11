@@ -5,7 +5,7 @@ namespace RPG.Classes
 {
     public class StageManager
     {
-        public static int stageNumber = 0;
+        public static int stageNumber = 1;
 
         public void LoadStage(int number) {
             switch(number) {

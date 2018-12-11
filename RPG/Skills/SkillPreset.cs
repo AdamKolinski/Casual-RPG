@@ -24,7 +24,12 @@ namespace RPG.Skills
 
         public virtual void SpecialEffect()
         {
+        }
 
+        public virtual void InitializeSkillValues()
+        {
+            playerStrength = Player.strength;
+            playerPower = Player.power;
         }
     }
 }

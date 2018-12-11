@@ -17,7 +17,7 @@ namespace RPG.Skills.Magical
             skillName = "Lecząca Salwa";
             damage = 0;
             healing = 1 * playerPower;
-            cost = 3;
+            cost = 1;
         }
 
         public override void SpecialEffect()

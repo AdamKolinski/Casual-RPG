@@ -14,7 +14,7 @@ namespace RPG.Enemies
             name = "Wilk";
             maxHP = 10;
             currentHP = maxHP;
-            strength = 1;
+            strength = 2;
             power = 0;
         }
     }

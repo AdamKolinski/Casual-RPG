@@ -1,5 +1,6 @@
 ﻿using System;
 using RPG.NPC;
+using System.Threading;
 
 namespace RPG.Classes
 {
@@ -14,6 +15,7 @@ namespace RPG.Classes
         static void Main(string[] args)
         {
             MenuManager menu = new MenuManager();
+            Player.InitializeCharacterClass(Player.CharacterClasses.Mag);
             //Console.OutputEncoding = System.Text.Encoding.Unicode;
             while (gameState != GameStates.Exit)
             {
@@ -33,9 +35,15 @@ namespace RPG.Classes
             }
         }
 
+        public static void ClearKeyBuffer()
+        {
+            while (Console.KeyAvailable)
+                Console.ReadKey(true);
+        }
+
         public static void GetKeyboardInput()
         {
-
+            ClearKeyBuffer();
             var keyPressed = Console.ReadKey(true).Key;
             switch (keyPressed)
             {
@@ -63,7 +71,7 @@ namespace RPG.Classes
                 default:
                     break;
             }
-
+            Thread.Sleep(30);
 
 
         }
