@@ -38,6 +38,7 @@
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Enemies\EnemyPreset.cs" />
     <Compile Include="Enemies\WolfEnemy.cs" />
+    <Compile Include="NPC\Companion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\MenuManager.cs" />
     <Compile Include="Classes\GameLoop.cs" />
@@ -45,6 +46,7 @@
     <Compile Include="Skills\Magical\MS_FireBall.cs" />
     <Compile Include="Skills\Magical\MS_FreezingShot.cs" />
     <Compile Include="Skills\Magical\MS_HealingSalve.cs" />
+    <Compile Include="Skills\Physical\PS_Harden.cs" />
     <Compile Include="Skills\Physical\PS_Stomp.cs" />
     <Compile Include="Skills\SkillPreset.cs" />
     <Compile Include="Stages\StageNewGame.cs" />

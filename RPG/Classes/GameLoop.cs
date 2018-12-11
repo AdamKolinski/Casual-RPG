@@ -1,4 +1,6 @@
 ﻿using System;
+using RPG.NPC;
+
 namespace RPG.Classes
 {
     public class GameLoop

@@ -23,6 +23,7 @@ namespace RPG.Classes
         public static int maxStamina = 20, currentStamina = 20;
         public static int power = 3;
         public static int maxMana = 20, currentMana = 20;
+        public static int dmgReduction = 0, dmgReductionDuration = 0;
         public static SkillPreset[] learnedSkills = new SkillPreset[4];
 
 
@@ -33,7 +34,9 @@ namespace RPG.Classes
                 case CharacterClasses.Wojownik:
                     characterClass = Player.CharacterClasses.Wojownik;
                     power = 1;
+                    learnedSkills[1] = new PS_Stomp();
                     learnedSkills[2] = new PS_Stomp();
+                    learnedSkills[3] = new PS_Harden();
                     break;
                 case CharacterClasses.Mag:
                     characterClass = Player.CharacterClasses.Mag;
@@ -103,6 +106,18 @@ namespace RPG.Classes
                     }
                     break;
             }
+        }
+
+        public static int GetDamage(int dmg)
+        {
+            if (dmgReductionDuration > 0) {
+                dmg -= dmgReduction;
+                if (dmg < 0) dmg = 0;
+                dmgReductionDuration--;
+            }
+            if (dmg > 0) currentHP -= dmg;
+
+            return dmg;
         }
 
         public static void UseSkill(int skillNumber, EnemyPreset enemy)

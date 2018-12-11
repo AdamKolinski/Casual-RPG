@@ -75,8 +75,7 @@ namespace RPG.Classes
                     Thread.Sleep(1000);
                 } else if(turnNumber % 2 == 1)
                 {
-                    Player.currentHP -= enemy.strength;
-                    dealtDmg = enemy.strength;
+                    dealtDmg = Player.GetDamage(enemy.strength); ;
                     SetCursorPosition(0, 15);
                     WriteLine("{0} otrzymał {1} obrażeń!", Player.name, dealtDmg);
 

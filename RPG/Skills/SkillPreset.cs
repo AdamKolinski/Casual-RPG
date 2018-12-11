@@ -7,6 +7,7 @@ using RPG.Classes;
 
 namespace RPG.Skills
 {
+
     class SkillPreset
     {
         public enum SkillType { Fizyczny, Magiczny, Brak}
