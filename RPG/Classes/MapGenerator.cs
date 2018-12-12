@@ -16,9 +16,10 @@ namespace RPG.Classes
 
         }
 
-        public void GenerateMapFromFile()
+        public void GenerateMapFromFile(StageManager.Stages mapFileName)
         {
-            FileStream fs = new FileStream("Maps/Location_2.txt", FileMode.Open, FileAccess.Read);
+            width = 0; height = 0; x = 0; y = 0; spawnedPlayer = false;
+            FileStream fs = new FileStream("Maps/"+mapFileName+".txt", FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(fs);
 
             int lineWidth = 0;
@@ -42,7 +43,7 @@ namespace RPG.Classes
             fs.Close();
             sr.Close();
 
-            fs = new FileStream("Maps/Location_2.txt", FileMode.Open, FileAccess.Read);
+            fs = new FileStream("Maps/" + mapFileName + ".txt", FileMode.Open, FileAccess.Read);
             sr = new StreamReader(fs);
 
             x = Console.CursorLeft;
@@ -51,7 +52,7 @@ namespace RPG.Classes
 
             for (int i = 0; i < height; i++)
             {
-                line = sr.ReadLine().Replace("\t", "");
+                line = sr.ReadLine();
                 for (int j = 0; j < line.Length; j++)
                 {
 

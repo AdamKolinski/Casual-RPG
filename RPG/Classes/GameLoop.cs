@@ -15,15 +15,15 @@ namespace RPG.Classes
         static void Main(string[] args)
         {
             MenuManager menu = new MenuManager();
-            Player.InitializeCharacterClass(Player.CharacterClasses.Mag);
+            Player.InitializeCharacterClass(Player.CharacterClasses.Brak);
+            StageManager stageManager = new StageManager();
             //Console.OutputEncoding = System.Text.Encoding.Unicode;
             while (gameState != GameStates.Exit)
             {
                 switch (gameState)
                 {
                     case GameStates.Playing:
-                        StageManager stageManager = new StageManager();
-                        stageManager.LoadStage(StageManager.stageNumber);
+                        stageManager.LoadStage();
                         break;
                     case GameStates.Menu:
                         menu.MainMenu();

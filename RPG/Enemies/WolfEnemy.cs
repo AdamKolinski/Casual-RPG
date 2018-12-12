@@ -16,6 +16,7 @@ namespace RPG.Enemies
             currentHP = maxHP;
             strength = 2;
             power = 0;
+            XP = 25;
         }
     }
 }

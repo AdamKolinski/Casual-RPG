@@ -10,17 +10,17 @@ namespace RPG.Stages
         {
             Player.ShowStats(0, 0, true);
             Console.WriteLine("Bramy Khaletris, wieczór");
-            Console.WriteLine();
+            Console.WriteLine(new string(' ', Console.WindowWidth - 1));
             //MapGenerator mapGenerator = new MapGenerator(1);
             //mapGenerator.DrawMap(1);
             //f.GenerateMapFromFile();
             //mapGenerator.DrawMap();
-
-
-            
-            
-            //Console.WriteLine(MapGenerator.mapCharacters[0, 0]);
             MapGenerator.DrawMap();
+            GameLoop.GetKeyboardInput();
+
+
+            //Console.WriteLine(MapGenerator.mapCharacters[0, 0]);
+            
 
             if (Player.playerLvl == 1 && Player.xPos > 24 && Player.yPos > 3 && Player.yPos < MapGenerator.height - 4)
             {
@@ -43,7 +43,12 @@ namespace RPG.Stages
                 }
             }
             // MapGenerator.prevMapCharacters = MapGenerator.mapCharacters;
-            GameLoop.GetKeyboardInput();
+
+            if (Player.xPos == MapGenerator.width - 1 && (Player.yPos == 7 || Player.yPos == 8))
+            {
+                StageManager.currentStage = StageManager.Stages.Khaletris_Entrance;
+                StagePreset.mapLoaded = false;
+            }
             //Player.Movement();
             //Console.ReadKey(true);
             //GameLoop.gameState = GameLoop.GameStates.Exit;

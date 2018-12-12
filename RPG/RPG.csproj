@@ -49,6 +49,7 @@
     <Compile Include="Skills\Physical\PS_Harden.cs" />
     <Compile Include="Skills\Physical\PS_Stomp.cs" />
     <Compile Include="Skills\SkillPreset.cs" />
+    <Compile Include="Stages\Khaletris_Entrance.cs" />
     <Compile Include="Stages\StageNewGame.cs" />
     <Compile Include="Stages\StagePreset.cs" />
     <Compile Include="Stages\StageOne.cs" />

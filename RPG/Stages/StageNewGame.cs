@@ -50,7 +50,7 @@ namespace RPG.Stages
                     $"Spotkajmy się w Khaletris! Krzyknął do {Player.characterClass}a.");
                 Console.ReadKey();
 
-                StageManager.stageNumber = 1;
+                StageManager.currentStage = StageManager.Stages.Khaletris_Gate;
                 StagePreset.mapLoaded = false;
             }
         }

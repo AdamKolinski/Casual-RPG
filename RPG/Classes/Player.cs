@@ -14,7 +14,7 @@ namespace RPG.Classes
     class Player
     {
         public enum CharacterClasses { Wojownik, Mag, Brak }
-        public static CharacterClasses characterClass = CharacterClasses.Mag;
+        public static CharacterClasses characterClass = CharacterClasses.Brak;
         public static string characterSign = "×";
         public static int xPos = -10, yPos = -10;
         public static string name = "John";
@@ -55,7 +55,7 @@ namespace RPG.Classes
             switch (key)
             {
                 case ConsoleKey.D:
-                    if (MapGenerator.mapCharacters[xPos + 1, yPos] == " ")
+                    if (MapGenerator.mapCharacters[xPos + 1, yPos] == " " || MapGenerator.mapCharacters[xPos + 1, yPos] == ">")
                     {
                         MapGenerator.mapCharacters[xPos, yPos] = " ";
                         MapGenerator.mapCharacters[xPos + 1, yPos] = characterSign;
